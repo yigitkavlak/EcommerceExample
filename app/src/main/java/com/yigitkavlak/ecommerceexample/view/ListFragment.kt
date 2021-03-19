@@ -9,6 +9,7 @@ import android.widget.GridView
 import android.widget.ListView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yigitkavlak.ecommerceexample.R
 import com.yigitkavlak.ecommerceexample.adapter.ProductRecyclerAdapter
@@ -39,8 +40,12 @@ class ListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.getDataFromAPI()
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
+      //  recyclerView.layoutManager = LinearLayoutManager(context)
+       val manager = GridLayoutManager(context,2)
+
+        recyclerView.layoutManager = manager
         recyclerView.adapter = productAdapter
+
 
         refreshData()
         observeLiveData()

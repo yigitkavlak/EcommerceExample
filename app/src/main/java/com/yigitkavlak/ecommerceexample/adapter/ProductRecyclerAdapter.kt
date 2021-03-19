@@ -38,7 +38,7 @@ class ProductRecyclerAdapter(val productList: ArrayList<Products>) :
         return productList.size
     }
 
-    fun updateProductList(newProductList : List<Products>) {
+    fun updateProductList(newProductList: List<Products>) {
         productList.clear()
         productList.addAll(newProductList)
         notifyDataSetChanged()
