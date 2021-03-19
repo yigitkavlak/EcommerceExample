@@ -2,15 +2,19 @@ package com.yigitkavlak.ecommerceexample.viewmodel
 
 import android.app.Application
 import android.content.Context
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.Navigation
 import com.yigitkavlak.ecommerceexample.model.Products
 import com.yigitkavlak.ecommerceexample.service.ServiceClient
+import com.yigitkavlak.ecommerceexample.view.ListFragmentDirections
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.item_product.view.*
 
 class ListViewModel(application: Application) : BaseViewModel(application) {
 
@@ -47,5 +51,9 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
         )
     }
 
+    fun onClick(view: View){
+        val action = ListFragmentDirections.actionListFragmentToBasketFragment()
+        Navigation.findNavController(view).navigate(action)
+    }
 
 }

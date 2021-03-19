@@ -5,16 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridView
-import android.widget.ListView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.yigitkavlak.ecommerceexample.R
 import com.yigitkavlak.ecommerceexample.adapter.ProductRecyclerAdapter
 import com.yigitkavlak.ecommerceexample.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
+import kotlinx.android.synthetic.main.item_product.*
+import kotlinx.android.synthetic.main.item_product.view.*
 
 
 class ListFragment : Fragment() {
@@ -94,6 +93,7 @@ class ListFragment : Fragment() {
             swipeRefreshLayout.isRefreshing = false
         }
     }
+
 
 
 
