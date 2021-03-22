@@ -6,6 +6,7 @@
  - MVVM Pattern
  - Navigation
  - Room Database
+ - Databinding
  - LiveData
  - ViewModel
  - RxJava
