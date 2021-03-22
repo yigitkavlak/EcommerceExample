@@ -9,6 +9,9 @@
         <variable
             name="products"
             type="com.yigitkavlak.ecommerceexample.model.Products" />
+        <variable
+            name="listener"
+            type="com.yigitkavlak.ecommerceexample.adapter.ProductButtonClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +24,21 @@
         android:layout_marginBottom="3dp"
         android:background="@drawable/layout_border">
 
+        <TextView
+            android:id="@+id/uuidTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(products.uuid)}"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:cardCornerRadius="8dp"
@@ -92,6 +109,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="#FF5722"
                         android:gravity="center"
+                        android:onClick="@{listener::onClicked}"
                         android:text="ADD BASKET"
                         android:textSize="12sp">
 

@@ -2,6 +2,7 @@ package com.yigitkavlak.ecommerceexample.viewmodel
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -39,6 +40,7 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
                     productError.value = false
                     productsLoading.value = false
                     Toast.makeText(getApplication(),"products from API ", Toast.LENGTH_LONG).show()
+                    Log.i("ProductList","${products.value}")
                 }
 
                 override fun onError(e: Throwable) {
@@ -51,9 +53,10 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
         )
     }
 
-    fun onClick(view: View){
-        val action = ListFragmentDirections.actionListFragmentToBasketFragment()
-        Navigation.findNavController(view).navigate(action)
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
     }
+
 
 }

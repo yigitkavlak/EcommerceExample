@@ -37,3 +37,4 @@ fun placeHolderProgressBar(context: Context): CircularProgressDrawable {
 fun downloadUrl(view: ImageView, url: String?) {
     view.product_image.downloadFromUrl(url, placeHolderProgressBar(view.context))
 }
+
