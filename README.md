@@ -19,3 +19,4 @@
 ##### WORKFLOW
 - [x] Design, list viewmodel, list page, network services and database.
 - [ ] Order page
+- [ ] Unit tests
