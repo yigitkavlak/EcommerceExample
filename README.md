@@ -1,5 +1,5 @@
 # EcommerceExample
-# An android application that allows you shows product and make an order.
+## An android application that allows you shows product and make an order.
 
 ## Tech Stack
 
