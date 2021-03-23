@@ -26,30 +26,40 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
     val productError = MutableLiveData<Boolean>()
     val productsLoading = MutableLiveData<Boolean>()
 
+    var tryCounter = 0
 
     fun getDataFromAPI() {
         productsLoading.value = true
 
         disposable.add(
-        productService.getData()
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : DisposableSingleObserver<List<Products>>(){
-                override fun onSuccess(t: List<Products>) {
-                    products.value = t
-                    productError.value = false
-                    productsLoading.value = false
-                    Toast.makeText(getApplication(),"products from API ", Toast.LENGTH_LONG).show()
-                    Log.i("ProductList","${products.value}")
-                }
+            productService.getData()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<List<Products>>() {
+                    override fun onSuccess(t: List<Products>) {
+                        tryCounter = 0
+                        products.value = t
+                        productError.value = false
+                        productsLoading.value = false
+                        Toast.makeText(getApplication(), "products from API ", Toast.LENGTH_LONG)
+                            .show()
+                        Log.i("ProductList", "${products.value}")
+                    }
 
-                override fun onError(e: Throwable) {
-                    productsLoading.value = false
-                    productError.value = true
-                    e.printStackTrace()
-                }
+                    override fun onError(e: Throwable) {
 
-            })
+
+                       if(tryCounter < 3 ){
+                           getDataFromAPI()
+                       }else {
+                           productsLoading.value = false
+                           productError.value = true
+                           e.printStackTrace()
+                       }
+
+                    }
+
+                })
         )
     }
 
