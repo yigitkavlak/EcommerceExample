@@ -12,30 +12,28 @@
         <variable
             name="listener"
             type="com.yigitkavlak.ecommerceexample.adapter.ProductButtonClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="3dp"
+
         android:background="@drawable/layout_border">
 
-        <TextView
-            android:id="@+id/uuidTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(products.uuid)}"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+<!--        <TextView-->
+<!--            android:id="@+id/productUuidTextView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@{String.valueOf(products.uuid)}"-->
+<!--            android:visibility="gone"-->
+<!--            app:layout_constraintBottom_toTopOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
-        </TextView>
+<!--        </TextView>-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -85,7 +83,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="5dp"
-                        android:layout_weight="0.2"
+                        android:layout_weight="0.3"
                         android:gravity="center"
                         android:text="@{products.currency}"
                         android:textAlignment="center"
@@ -96,7 +94,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="10dp"
-                        android:layout_weight="0.5"
+                        android:layout_weight="0.7"
                         android:gravity="center"
                         android:text="@{products.price}"
                         android:textAlignment="center" />
@@ -109,9 +107,9 @@
                         android:layout_weight="1"
                         android:backgroundTint="#FF5722"
                         android:gravity="center"
-                        android:onClick="@{listener::onClicked}"
+                        android:onClick="@{(v) -> listener.onClicked(v) }"
                         android:text="ADD BASKET"
-                        android:textSize="12sp">
+                        android:textSize="10sp">
 
                     </Button>
 

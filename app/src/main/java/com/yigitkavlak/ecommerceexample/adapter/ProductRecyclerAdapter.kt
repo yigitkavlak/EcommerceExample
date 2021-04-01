@@ -1,21 +1,19 @@
 package com.yigitkavlak.ecommerceexample.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.yigitkavlak.ecommerceexample.R
 import com.yigitkavlak.ecommerceexample.databinding.ItemProductBinding
 import com.yigitkavlak.ecommerceexample.model.Products
 import com.yigitkavlak.ecommerceexample.view.ListFragmentDirections
-import kotlinx.android.synthetic.main.item_product.view.*
 
 
-class ProductRecyclerAdapter(val productList: ArrayList<Products>) :
-    RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>() , ProductButtonClickListener {
+class ProductRecyclerAdapter(private val productList: ArrayList<Products>) :
+    RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>(), ProductButtonClickListener {
     class ProductViewHolder(var view: ItemProductBinding) : RecyclerView.ViewHolder(view.root) {
 
     }
@@ -49,11 +47,8 @@ class ProductRecyclerAdapter(val productList: ArrayList<Products>) :
     }
 
     override fun onClicked(v: View) {
-
         val action = ListFragmentDirections.actionListFragmentToBasketFragment()
-        Navigation.findNavController(v).navigate(action)
-        Log.i("onClick","Clicked")
-
+        v.findNavController().navigate(action)
     }
 
 

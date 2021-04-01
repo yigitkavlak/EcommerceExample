@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.yigitkavlak.ecommerceexample.viewmodel.BasketViewModel" />
+
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -71,7 +77,8 @@
                 android:backgroundTint="#FF5722"
                 android:text="PLACE ORDER"
                 android:textSize="12dp"
-                android:textColor="@color/white">
+                android:textColor="@color/white"
+               >
 
             </Button>
 

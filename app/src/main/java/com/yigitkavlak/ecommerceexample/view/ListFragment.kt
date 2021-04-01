@@ -39,8 +39,8 @@ class ListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.getDataFromAPI()
 
-      //  recyclerView.layoutManager = LinearLayoutManager(context)
-       val manager = GridLayoutManager(context,2)
+        //  recyclerView.layoutManager = LinearLayoutManager(context)
+        val manager = GridLayoutManager(context, 2)
 
         recyclerView.layoutManager = manager
         recyclerView.adapter = productAdapter
@@ -52,7 +52,7 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.products.observe(viewLifecycleOwner, Observer { product ->
             product?.let {
                 recyclerView.visibility = View.VISIBLE
@@ -84,7 +84,7 @@ class ListFragment : Fragment() {
         })
     }
 
-    fun refreshData(){
+    private fun refreshData() {
         swipeRefreshLayout.setOnRefreshListener {
             recyclerView.visibility = View.GONE
             error_text.visibility = View.GONE
@@ -93,8 +93,6 @@ class ListFragment : Fragment() {
             swipeRefreshLayout.isRefreshing = false
         }
     }
-
-
 
 
 }
